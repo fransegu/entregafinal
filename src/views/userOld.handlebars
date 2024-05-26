@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BASE DE DATOS DE PRODUCTOS EN TIEMPO REAL</title>
+</head>
+<header>
+    <h1>
+        PELIMANIA "LA RIPOLL"
+    </h1>
+</header>
+<body>
+    {{#if users.length}}
+        <div class="product-cards">
+            {{#each users}}
+                <div class="product-card">
+                    <h4>NOMBRE: {{name}}</h4>
+                    <h4 id="email">EMAIL: {{email}}</h4>
+                </div> 
+            {{/each}}
+        </div>
+    {{else}} 
+        <p>No users available.</p>
+    {{/if}}   
+    <input type="hidden" class="users1" id="users1" value="{{users1}}">
+
+    <button class="boton_delete"  onclick="deleteUser()">DELETE</button>
+
+    <button class="boton_volver"><a href="/api/views/users">VOLVER</a></button>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script src="/src/public/functions.js"></script>

@@ -1,0 +1,26 @@
+<header>
+    <h1>
+        USER ADMINISTRATION
+    </h1>
+</header>
+<body>
+   
+    <form id="changeRoleForm">
+        <h3>USER : {{email}}</h4>
+        <h3>CATEGORY: {{role}}</h4>
+
+        <label for="role">New category:</label>
+        <select id="role" name="role">
+            <option value="user">User</option>
+            <option value="premium">Premium</option>
+        </select>
+        <input type="hidden" name="email" id="email" value="{{email}}">
+        <input type="hidden" name="uid" id="uid" value="{{id}}">
+        <button type="button" onclick="changeRole('{{id}}')">Change Role</button>
+    </form>
+        
+    <button class="boton_volver"><a href="/api/views/users">Back</a></button>
+
+</body>
+<script src="/src/public/functions.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
