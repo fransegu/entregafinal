@@ -9,15 +9,15 @@ const divChat = document.getElementById("chat");
 let user;
 
 Swal.fire({
-    title: "Welcome",
-    text: "What is your name?",
+    title: "Bienvenido",
+    text: "Cual es tu nombre?",
     input: "text",
     inputValidator: (value) => {
         if (!value) {
-        return "Name is required";
+        return "Nombre es requerido";
         }
     },
-    confirmButtonText: "Enter",
+    confirmButtonText: "Enviar",
     }).then((input) => {
     user = input.value;
     h4Name.innerText = user;
@@ -37,7 +37,7 @@ socketClient.on("userConnected", (user) => {
 
 socketClient.on("connected", () => {
     Toastify({
-        text: "Your are connected",
+        text: "Estas en linea",
         style: {
         background: "linear-gradient(to right, #00b09b, #96c93d)",
         },

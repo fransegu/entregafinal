@@ -16,7 +16,7 @@ export const findUserById = (req, res) => {
         if (!user) {
                 return CustomError.generateError(ErrorMessages.USER_NOT_EXIST,404,ErrorName.USER_NOT_EXIST);
             }
-        res.json({ message: "User", user });
+        res.json({ message: "Usuario", user });
 }};
 
 export const findUserByEmail = async (req, res) => {
@@ -26,7 +26,7 @@ export const findUserByEmail = async (req, res) => {
         return CustomError.generateError(ErrorMessages.USER_NOT_EXIST,404,ErrorName.USER_NOT_EXIST);
 
     }
-    res.status(200).json({ message: "User found", user });
+    res.status(200).json({ message: "Usuario encontrado", user });
 };
 
 export const findAllUsers = async (req, res) => {
@@ -48,8 +48,8 @@ export const oldUsers = async (req, res) => {
         }
         return oldUsersList;
     } catch (error) {
-        console.error("OldUsers Error:", error);
-        res.status(500).send("Server internal error");
+        console.error("Usuario antiguo listado error:", error);
+        res.status(500).send("Error interno del servidor");
     }
 };
 
@@ -74,7 +74,7 @@ export const createUser =  async (req, res) => {
 
     }
     const createdUser = await createOne(req.body);
-    res.status(200).json({ message: "User created", user: createdUser });
+    res.status(200).json({ message: "Usuario creado", user: createdUser });
 };
 
 
@@ -86,27 +86,27 @@ export const updateUserNow = async (req, res) => {
     const userToUpdate = await findById(uid);
  
     if (!userToUpdate) {
-        return res.status(404).json({ message: "User not found" });
+        return res.status(404).json({ message: "Usuario no encontrado" });
     }
 
     if ( userToUpdate.role === role) {
-        return res.status(400).json({ message: "Your role is the same as the one you want to change" });
+        return res.status(400).json({ message: "No puedes actualizar a un mismo rol" });
     }
     if (role === "premium") {
         if (!userToUpdate.documents[0] || !userToUpdate.documents[1] || !userToUpdate.documents[2]) {
-            return res.status(400).json({ message: "Please update your documentation first" });
+            return res.status(400).json({ message: "Debes actualizar tu perfil" });
         }
     }
     if (userToUpdate._doc.email !== email ){
-        return res.status(400).json({ message: "The information provided are incorrect" });
+        return res.status(400).json({ message: "Los datos son incorrectos" });
     }
     if (userToUpdate.role !== role) {
         const newUser = { ...userToUpdate._doc, role: role };
-        console.log(newUser, "new user");
+        console.log(newUser, "Usuario nuevo");
         const updatedUser = await updateUser(uid, newUser);
-        res.status(200).json({ message: "User updated", user: updatedUser });
+        res.status(200).json({ message: "Usuario actualizado", user: updatedUser });
         } else {
-            res.status(400).json({ message: "Nothing has changed" });
+            res.status(400).json({ message: "Sin cambios" });
         }
     }
     catch (error) {
@@ -122,9 +122,9 @@ export const updatePerfil = async (req,res) => {
         const address = req.files.address;
         const bank = req.files.bank;
         const response = await updatePerfilDoc(uid, { dni, address, bank });
-        res.status(201).json({ message: "Documents add" });
+        res.status(201).json({ message: "Documentos agregados" });
     } catch (error) {
-        res.status(500).json({ message: "Server internal error" });
+        res.status(500).json({ message: "Error interno del servidor" });
     }
 }    
 
@@ -134,8 +134,8 @@ export const updateFoto = async (req, res) => {
         const user = await findById(uid);
         const foto = req.files.profiles;
         const response = await updatePerfilFoto(uid, {foto})
-        res.status(201).json({ message: "Photo add" });
+        res.status(201).json({ message: "Imagen agregada" });
     } catch (error) {
-        res.status(500).json({ message: "Server internal error" });
+        res.status(500).json({ message: "Error interno del servidor" });
     }
 }

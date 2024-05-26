@@ -19,15 +19,15 @@ const deleteOne = async (cid, _id, product) => {
         });
 
         if (!response.ok) {
-            // Handle non-successful responses here
-            console.error("Error in delete product to cart:", response.status, response.statusText);
+            
+            console.error("Error en eliminar el producto", response.status, response.statusText);
             return;
         }
 
         const result = await response.json();
-        console.log("Product delete to cart:", result);
+        console.log("Eliminar producto:", result);
     } catch (error) {
-        // Handle fetch errors here
+      
         console.error("Fetch error:", error.message);
     }
 };
@@ -56,15 +56,14 @@ const addProductToCart = async (cid, _id, product) => {
         });
 
         if (!response.ok) {
-            // Handle non-successful responses here
-            console.error("Error in added product to cart:", response.status, response.statusText);
+         
+            console.error("Error en añadir al producto", response.status, response.statusText);
             return;
         }
 
         const result = await response.json();
-        console.log("Product add to cart:", result);
+        console.log("Producto añadido al carrito", result);
     } catch (error) {
-        // Handle fetch errors here
         console.error("Fetch error:", error.message);
     }
 };
@@ -82,21 +81,21 @@ const deleteAll = async (cid) => {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
-                // Add any additional headers as needed
+              
             },
             body: JSON.stringify(data),
         });
 
         if (!response.ok) {
-            // Handle non-successful responses here
-            console.error("Error in delete to cart:", response.status, response.statusText);
+           
+            console.error("Error en eliminar el carrito", response.status, response.statusText);
             return;
         }
 
         const result = await response.json();
-        console.log(" delete to cart:", result);
+        console.log(" borrar del carrito", result);
     } catch (error) {
-        // Handle fetch errors here
+       
         console.error("Fetch error:", error.message);
     }
 };

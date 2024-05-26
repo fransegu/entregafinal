@@ -11,7 +11,7 @@ class Carts {
             const cartsData = JSON.parse(cartsFile);
             return cartsData;
         } else {
-            logger.info("The file doesnt exist");
+            logger.info("El archivo no existe");
             return [];
         }
         } catch (error) {
@@ -56,7 +56,7 @@ class Carts {
             console.log(cart);
         
             if (!cart) {
-                throw new Error("Cart not found");
+                throw new Error("Carrito no encontrado");
             }
 
             const productIndex = cart.products.findIndex((p) => p.product === pid);
@@ -72,7 +72,7 @@ class Carts {
             return cart
         } 
         catch (error) {
-            console.error(`Error adding product to cart: ${error.message}`);
+            console.error(`Error al añadir al carrito ${error.message}`);
             throw error;
         }
     }

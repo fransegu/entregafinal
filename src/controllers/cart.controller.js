@@ -21,10 +21,10 @@ export const findCartById = async (req, res) => {
         if (!cart) {
             return CustomError.generateError(ErrorMessages.CART_NOT_FOUND,404,ErrorName.CART_NOT_FOUND);
         }
-        res.status(200).json({ message: "Cart found", cart });
+        res.status(200).json({ message: "Carrito encontrado", cart });
     } catch (error) {
         logger.error(error)
-        res.status(500).json({ message: "Server internal error" });
+        res.status(500).json({ message: "Error del servidor" });
     }
 };
 
@@ -32,22 +32,22 @@ export const findAllCart = async (req, res) => {
     try {
         const carts = await findAll();
         if (!carts || carts.length === 0) {
-            return res.status(404).json({ message: "No carts found" });
+            return res.status(404).json({ message: "No se encontro el carrito" });
         }
-        res.status(200).json({ message: "Carts found", carts });
+        res.status(200).json({ message: "Carritos encontrados", carts });
     } catch (error) {
         logger.error(error)
-        res.status(500).json({ message: "Server internal error" });
+        res.status(500).json({ message: "Error del servidor" });
     }
 }
 
 export const createOneCart = async (req, res) => {
     try {
         const cart = await createOne();
-        res.status(201).json({ message: "Cart created", cart });
+        res.status(201).json({ message: "Carrito creado", cart });
     } catch (error) {
         logger.error(error)
-        res.status(500).json({ message: "Server internal error" });
+        res.status(500).json({ message: "Error del servidor" });
     }
 }
 
@@ -56,19 +56,19 @@ export const addProductCart = async (req, res) => {
     try {
         const productAdd = await findById(pid);
         if (productAdd.owner === req.user.mail) {
-            return res.status(404).json({ message: "You cannot add your own products" });
+            return res.status(404).json({ message: "No se puede agregar al carrito" });
         } else {
             const cartNow = await findCById(cid);
             if (productAdd.stock) {
                 const response = await addProduct(cid,pid);
-                return res.status(200).json({ message: "Product added to cart", cart: response })}
+                return res.status(200).json({ message: "Producto añadido al carrito", cart: response })}
                 else {
-                    return res.status(404).json({ message: "Insufficient stock" });
+                    return res.status(404).json({ message: "Producto sin stock" });
                 };
         }
     } catch (error) {
         logger.error(error)
-        return res.status(500).json({ message: "Server internal error" });
+        return res.status(500).json({ message: "Error del servidor" });
     }
 }
 
@@ -76,10 +76,10 @@ export const deleteOneProdCart = async (req, res) => {
     try {
         const { cid, pid } = req.params;
         const response = await deleteOneProduct(cid,pid);
-        res.status(200).json({ message: "Product delete to cart", cart: response });
+        res.status(200).json({ message: "Eliminar del carrito", cart: response });
     
     } catch (error){
-        res.status(500).json({ message: "Server internal error" });
+        res.status(500).json({ message: "Error del servidor" });
     }
 }
 
@@ -87,10 +87,10 @@ export const deleteOneCartAll = async (req, res) => {
     try {
         const { cid } = req.params;
         const response = await deleteAll(cid);
-        res.status(200).json({ message: "Cart delette", cart: response });   
+        res.status(200).json({ message: "Eliminar del carrito", cart: response });   
     } catch (error){
         logger.error(error)
-        res.status(500).json({ message: "Server internal error" });
+        res.status(500).json({ message: "Error del servidor" });
     }
 }
 
@@ -99,10 +99,10 @@ export const updateCartQuantity = async (req, res) => {
     const { cid } = req.params;
     try {
         const response = await cartsManager.update(cid , pid , quantity);
-        res.status(200).json({ message: "cart update", cart: response });
+        res.status(200).json({ message: "Carrito actualizado", cart: response });
     } catch (error){
         logger.error(error)
-        res.status(500).json({ message: "Server internal error" });
+        res.status(500).json({ message: "Error del servidor" });
     }
 }
 
@@ -146,5 +146,5 @@ export const cartBuy = async (req,res) => {
         return { unavailableProducts };
     } catch (error) {
         logger.error(error)
-        res.status(500).json({ error: 'Server internal error' }); 
+        res.status(500).json({ error: 'Error del servidor' }); 
     }};

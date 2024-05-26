@@ -23,7 +23,7 @@ class productManager {
             const productoCargado = products.some((product) => product.code === code);
 
             if (productoCargado) {
-                console.log("The code that you are trying to upload already exist");
+                console.log("El codigo ya existe");
                 return;
             }
             let id;
@@ -50,7 +50,7 @@ class productManager {
                 console.log(producto);
                 return producto;
             } else {
-                console.log("ERROR: Not Found");
+                console.log("ERROR: No encontrado");
                 return;
             }
         } catch (error) {

@@ -1,11 +1,11 @@
 <header>
     <h1>
-       PRODUCT DETAIL
+       Producto {{product._doc._id}}
     </h1>
 </header>
 <div class="carrito">
     <a href="/api/views/carts/{{cartId}}" id="carritoLink">
-        <img class="imagen-carrito" src="https://cdn.pixabay.com/photo/2015/12/23/01/14/edit-1105049_1280.png" alt="Carrito de compras">
+        {{!-- <img class="imagen-carrito" src="https://cdn.pixabay.com/photo/2015/12/23/01/14/edit-1105049_1280.png" alt="Carrito de compras"> --}}
     </a>
     <span id="contadorCarrito"> {{quantity}} </span>
     <input type="hidden" id="cartId" value="{{ cartId }}">
@@ -13,15 +13,15 @@
 </div>
 
 <div class="product-card">
-    <h4>TITLE: {{product._doc.title}}</h4>
-    <p>DESCRIPTION: {{product._doc.description}}</p>
-    <p>PRICE: ${{product._doc.price}}</p>
-    <p>STOCK: {{product._doc.stock}}</p>
-    <p>CATEGORY: {{product._doc.category}}</p>
+    <h4>Titulo: {{product._doc.title}}</h4>
+    <p>Descripcion: {{product._doc.description}}</p>
+    <p>Precio: ${{product._doc.price}}</p>
+    <p>Stock: {{product._doc.stock}}</p>
+    <p>Categoria: {{product._doc.category}}</p>
     <img src="{{product._doc.thumbail}}" alt="{{product._doc.title}}">      
-    <button class="boton" id="add-to-cart-btn" data-product-id="{{product._doc._id}}" onclick="addToCart('{{cartId}}', '{{product._doc._id}}')">Add to Cart</button>
+    <button class="boton" id="add-to-cart-btn" data-product-id="{{product._doc._id}}" onclick="addToCart('{{cartId}}', '{{product._doc._id}}')">Añadir al carrito</button>
     <input type="hidden" id="pid" value="{{ product._doc._id }}">
-    <button class="boton"><a href="/api/views/home">RETURN</a></button>
+    <button class="boton"><a href="/api/views/home">Volver</a></button>
     <input type="hidden" id="pid" value="{{ product._doc._id }}">
 
     

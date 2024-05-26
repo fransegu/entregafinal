@@ -1,6 +1,6 @@
 <header>
     <h1>
-     HOME
+     Inicio
     </h1>
 </header>
 
@@ -8,11 +8,11 @@
 
 {{#if user}}
     <div class="userDiv">
-        <h2>WELCOME {{name}}</h2>
-        <h4>Your email is: {{email}} </h4>
-        <button class="boton"><a href="/api/session/signout">SIGN OUT</a></button>
+        <h2>Bienvenido {{name}}</h2>
+        <h4>Tu e-mail es: {{email}} </h4>
+        <button class="boton"><a href="/api/session/signout">Cerrar sesión</a></button>
         <input type="hidden" name="token" id="token" value="{{token}}">
-        <button class="boton"><a href="/api/views/realTimeProducts">Access DBA</a></button>
+        <button class="boton"><a href="/api/views/realTimeProducts">Acceso DBA</a></button>
         <button class="boton"><a href="/api/views/users/{{uid}}">Mi perfil</a></button>
 
     </div>
@@ -34,11 +34,11 @@
     <div class="product-cards">
         {{#each products}}
         <div class="product-card">
-            <h4>TITLE: {{title}}</h4>
-            <p>DESCRIPTION: {{description}}</p>
-            <p>PRICE: ${{price}}</p>
-            <img src="{{thumbail}}" alt="{{title}}">      
-            <button class="boton"><a href="/api/views/products/{{_id}}">VER MAS</a></button>
+            <h4>Titulo: {{title}}</h4>
+            <p>Descripción: {{description}}</p>
+            <p>Precio: ${{price}}</p>
+            {{!-- <img src="{{thumbail}}" alt="{{title}}">       --}}
+            <button class="boton"><a href="/api/views/products/{{_id}}">Ver más</a></button>
         </div>
         {{/each}}
     </div>
@@ -49,5 +49,5 @@
         <button class="boton" id="next-page" {{#if nextPage}}data-page="{{nextPage}}"{{/if}}><a id="pagination_button" href="home/?limit={{limit}}&page={{nextPage}}">Next Page</a></button>
     </div>
 {{else}}
-    <p>No products available.</p>
+    <p>No hay productos</p>
 {{/if}} 

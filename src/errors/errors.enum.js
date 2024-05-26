@@ -1,10 +1,10 @@
 export const ErrorMessages = {
-    PRODUCT_NOT_FOUND :'Product not found',
-    CART_NOT_FOUND: 'Cart not found',
-    USER_NOT_EXIST: 'User not exist',
-    PASSWORD_ERROR: 'Password error',
-    USER_NOT_AUTORIZED: 'User not autorized',
-    ALL_FIELDS_REQUIRED: 'All fields are required',
+    PRODUCT_NOT_FOUND :'Producto no encontrado',
+    CART_NOT_FOUND: 'Carrito no encontrado',
+    USER_NOT_EXIST: 'Usuario inexistente',
+    PASSWORD_ERROR: 'Error de contraseña',
+    USER_NOT_AUTORIZED: 'Usuario no autorizado',
+    ALL_FIELDS_REQUIRED: 'Todos los campos son requeridos',
 };
 
 export const ErrorName = {

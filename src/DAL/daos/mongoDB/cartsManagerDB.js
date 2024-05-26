@@ -79,7 +79,7 @@ class CartsManager {
             selectedCart.products = [];
 
         } else {
-            res.status(200).json({ message: "Cart not found"});
+            res.status(200).json({ message: "Carrito no encontrado"});
         }
         selectedCart.totalProducts = 0,
         selectedCart.totalPrice = 0

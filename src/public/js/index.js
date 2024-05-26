@@ -42,20 +42,20 @@ formEliminar.onsubmit = (e) => {
     e.preventDefault();
 
     Swal.fire({
-        title: 'Are you sure?',
+        title: 'Estas seguro?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Si, eliminar'
     }).then((result) => {
         if (result.isConfirmed) {
             const id = document.getElementById('id').value;
             socket.emit('eliminar', +id);
             formEliminar.reset();
             Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
+                'Eliminado!',
+                'Se ha eliminado.',
                 'success'
             );
         }

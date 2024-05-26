@@ -16,7 +16,7 @@ const restaurarviamail = async (paramEmail) =>{
         });
 
         if (!response.ok) {
-            console.error("Error sending email:", response.status, response.statusText);
+            console.error("Error enviando mail:", response.status, response.statusText);
             return;
         }
 
@@ -50,7 +50,7 @@ const restaurar = async () =>{
         });
 
         if (!response.ok) {
-            console.error("Fail:", response.status, response.statusText);
+            console.error("Fallo::", response.status, response.statusText);
             return;
         }
 
@@ -84,14 +84,14 @@ const addToCart = async (cartId, _id) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'You cannot add your own product to the cart.',
+                text: 'No puedes añadir este producto al carrito.',
             });
             return;
         }
         Swal.fire({
             icon: 'success',
-            title: 'Product Added',
-            text: 'The product has been added to your cart successfully.',
+            title: 'Producto añadido',
+            text: 'El producto ha sido añadido correctamente',
         });
         const result = await response.json();
         location.reload(true);
@@ -105,12 +105,12 @@ const addToCart = async (cartId, _id) => {
 const deleteOne = async (cartId, _id) => {
     const cid = document.getElementById('cartId').value;
     const confirmResult = await Swal.fire({
-        title: 'Are you sure?',
-        text: 'You are about to delete this product from your cart.',
+        title: 'Estas seguro?',
+        text: 'Estas a punto de eliminar el producto de tu carrito',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel',
+        confirmButtonText: 'Si, eliminar',
+        cancelButtonText: 'No, cancelar',
         confirmButtonColor: '#d33', 
         reverseButtons: true
     });
@@ -136,13 +136,13 @@ const deleteOne = async (cartId, _id) => {
         });
 
         if (!response.ok) {
-            console.error("Error in delete product to cart:", response.status, response.statusText);
+            console.error("Error en eliminar el producto del carrito", response.status, response.statusText);
             return;
         }
         Swal.fire({
             icon: 'success',
-            title: 'Product Deleted',
-            text: 'The product has been successfully deleted from your cart.',
+            title: 'Producto eliminado',
+            text: 'El producto ha sido eliminado correctamente del carrito',
         });
 
         const result = await response.json();
@@ -176,14 +176,14 @@ const addProductToCart = async (cartId, _id) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'You cannot add your own product to the cart.',
+                text: 'No puedes añadir este producto',
             });
             return;
         }
         Swal.fire({
             icon: 'success',
-            title: 'Product Added',
-            text: 'The product has been added to your cart successfully.',
+            title: 'Producto añadido',
+            text: 'El producto ha sido añadido correctamente',
         });
         const result = await response.json();
         location.reload(true);
@@ -195,12 +195,12 @@ const addProductToCart = async (cartId, _id) => {
 
 const deleteAll = async (cartId) => {
     const confirmResult = await Swal.fire({
-        title: 'Are you sure?',
-        text: 'You are about to delete alls product from your cart.',
+        title: 'Estas seguro?',
+        text: 'Estas a punto de elminar todos los productos del carrito',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Yes, delete all!',
-        cancelButtonText: 'No, cancel',
+        confirmButtonText: 'Si, eliminar todo',
+        cancelButtonText: 'No, cancelar',
         confirmButtonColor: '#d33', 
         reverseButtons: true
     });
@@ -223,13 +223,13 @@ const deleteAll = async (cartId) => {
         });
 
         if (!response.ok) {
-            console.error("Error in delete to cart:", response.status, response.statusText);
+            console.error("Error en eliminar:", response.status, response.statusText);
             return;
         }
         Swal.fire({
             icon: 'success',
-            title: 'Product Delette',
-            text: 'The products has been successfully deleted from your cart.',
+            title: 'Producto eliminado',
+            text: 'El producto ha sido eliminado completamente del carrito',
         });
         const result = await response.json();
         location.reload(true);
@@ -268,13 +268,13 @@ const createOneProduc = async () => {
         body: JSON.stringify(data),
     });
     if (!response.ok) {
-        console.error("Error in add the product:", response.status, response.statusText);
+        console.error("Error en añadir al producto: ", response.status, response.statusText);
         return;
     }
     Swal.fire({
         icon: 'success',
-        title: 'Product Created',
-        text: 'The product has been successfully created.',
+        title: 'Producto creado',
+        text: 'El producto ha sido creado correctamente',
         confirmButtonColor: '#28a745'
     });
     const result = await response.json();
@@ -288,12 +288,12 @@ const createOneProduc = async () => {
 const deleteUser = async (users1) => {
     const usersOld = JSON.parse(document.getElementById('users1').value);
     const confirmResult = await Swal.fire({
-        title: 'Are you sure?',
-        text: 'You are about to delete user.',
+        title: 'Estas seguro?',
+        text: 'Estas por eliminar el usuario',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Yes, delete all!',
-        cancelButtonText: 'No, cancel',
+        confirmButtonText: 'Si, eliminar',
+        cancelButtonText: 'No, cancelar',
         confirmButtonColor: '#d33', 
         reverseButtons: true
     });
@@ -314,13 +314,13 @@ const deleteUser = async (users1) => {
             body: JSON.stringify(data),
         });
             if (!response.ok) {
-                console.error("Error in eliminacion the users:", response.status, response.statusText);
+                console.error("Error en eliminacion de usuario:", response.status, response.statusText);
                 return;
             }
             Swal.fire({
                 icon: 'success',
-                title: 'User Delette',
-                text: 'The user has been successfully deleted.',
+                title: 'Usuario eliminado',
+                text: 'El usuario ha sido eliminado correctamente',
             });
             const result = await response.json();
         
@@ -334,12 +334,12 @@ const deleteOneProdAll = async () => {
     const id = document.getElementById('id').value;
     const token = document.getElementById('token').value;
     const confirmResult = await Swal.fire({
-        title: 'Are you sure?',
-        text: 'You are about to delete this product.',
+        title: 'Estas seguro?',
+        text: 'Estas a punto de eliminar este producto',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Yes, delete all!',
-        cancelButtonText: 'No, cancel',
+        confirmButtonText: 'Si, eliminar',
+        cancelButtonText: 'No, cancelar',
         confirmButtonColor: '#d33', 
         reverseButtons: true
     });
@@ -361,15 +361,15 @@ const deleteOneProdAll = async () => {
         Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'You cannot delete a product you have not added.',
+            text: 'No puedes eliminar este producto ya que no existe',
         });
-        // console.error("Error in eliminacion the product:", response.status, response.statusText);
+        // console.error("Error en eliminacion del producto:", response.status, response.statusText);
         return;
     }
     Swal.fire({
         icon: 'success',
-        title: 'Product Delette',
-        text: 'The product has been successfully deleted.',
+        title: 'Producto eliminado',
+        text: 'El producto ha sido eliminado correctamente',
     });
     const result = await response.json();
     location.reload(true);
@@ -392,13 +392,13 @@ async function changeUserRole(uid) {
         });
 
         if (!response.ok) {
-            console.error('Error changing role:', response.status, response.statusText);
+            console.error('Error en cambio de tipo de usuario:', response.status, response.statusText);
             return;
         }
         Swal.fire({
             icon: 'success',
-            title: 'Product Created',
-            text: 'Role changed successfully',
+            title: 'Rol cambiado',
+            text: 'Se ha cambiado el rol correctamente',
             confirmButtonColor: '#28a745'
         });
         const result = await response.json();
@@ -421,13 +421,13 @@ async function changeRole(uid) {
             body: JSON.stringify({ role: selectedRole , email: email }),
         });
         if (!response.ok) {
-            console.error('Error changing role:', response.status, response.statusText);
+            console.error('Error cambiando tipo de usuario:', response.status, response.statusText);
             return;
         }
         Swal.fire({
             icon: 'success',
-            title: 'Product Created',
-            text: 'Role changed successfully',
+            title: 'Rol cambiado',
+            text: 'Se ha cambiado el rol correctamente',
             confirmButtonColor: '#28a745'
         });   
         const result = await response.json();
@@ -455,7 +455,7 @@ async function buy (cartId) {
         if (result.availableProducts && result.availableProducts.length > 0) {
             window.location.href = "/api/views/ticket";
         } else {
-            console.error('Purchase not successful:', result.unavailableProducts);
+            console.error('Compra no exitosa', result.unavailableProducts);
         };
         const result = await response.json();
     } catch (error) {
