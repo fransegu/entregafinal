@@ -41,7 +41,7 @@
     "swagger": "^0.7.5",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0",
-    "sweetalert2": "^11.10.6",
+    "sweetalert2": "^11.11.0",
     "tailwindcss": "^3.4.1",
     "winston": "^3.12.0"
   },
