@@ -16,7 +16,7 @@
         CODE: <input type="number" name="code" id="code" required>
         CATEGORY: <input type="text" name="category" id="category" required>
         THUMBAIL: <input type="text" name="thumbail" id="thumbail">
-        <button type="button" onclick="createOneProduc()">AGREGAR</button>
+        <button type="button" onclick="createOneProduct()">AGREGAR</button>
     </form>
 
   
@@ -49,6 +49,54 @@
    
     <script src="/src/public/functions.js"></script>
 
+<script>
+    const createOneProduct = async () => {
+    const title = document.getElementById('title').value;
+    const description = document.getElementById('description').value;
+    const price = document.getElementById('price').value;
+    const stock = document.getElementById('stock').value;
+    const code = document.getElementById('code').value;
+    const category = document.getElementById('category').value;
+    {{!-- const thumbail = document.getElementById('thumbail').value; --}}
+    const token = document.getElementById('token').value; 
+    const data = {
+        title: title,
+        description: description,
+        price: price,
+        stock: stock,
+        code: code,
+        token: token,
+        category: category,
+        {{!-- thumbail: thumbail --}}
+    };
+    const url = 'http://localhost:8080/api/products/';
+    try {
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,        
+        },
+        body: JSON.stringify(data),
+    });
+    if (!response.ok) {
+        console.error("Error en añadir al producto: ", response.status, response.statusText);
+        return;
+    }
+    Swal.fire({
+        icon: 'success',
+        title: 'Producto creado',
+        text: 'El producto ha sido creado correctamente',
+        confirmButtonColor: '#28a745'
+    });
+    const result = await response.json();
+    location.reload(true);
 
+    } catch (error) {
+    console.error("Fetch error:", error.message);
+}
+};
+
+</script>
 </body>
 </html>

@@ -28,7 +28,7 @@ export const findAllProduct = async (req, res) => {
     }
 }
 
-export const createOneProduc = async (req, res) => {
+export const createOneProduct = async (req, res) => {
     const { title, description, price, code, stock, category } = req.body;
 
     if (!title || !description || !price || !code || !stock || ! category) {

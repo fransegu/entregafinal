@@ -9,11 +9,11 @@ export const findticketById = async (req, res) => {
     try {
         const ticket = await findById(tid);
         if (!ticket) {
-            return res.status(404).json({ message: "Ticket not found" });
+            return res.status(404).json({ message: "Ticket no encontrado" });
         }
-        res.status(200).json({ message: "Ticket found", ticket });
+        res.status(200).json({ message: "Ticket encontrado", ticket });
     } catch (error) {
-        res.status(500).json({ message: "Server internal error" });
+        res.status(500).json({ message: "Error interno del servidor" });
     }
 };
 
@@ -22,19 +22,19 @@ export const findticketByEmail = async (req, res) => {
     try {
         const ticket = await findByEmail(email);
         if (!ticket) {
-            return res.status(404).json({ message: "Ticket not found" });
+            return res.status(404).json({ message: "Ticket no encontrado" });
         }
-        res.status(200).json({ message: "Ticket found", ticket });
+        res.status(200).json({ message: "Ticket encontrado", ticket });
     } catch (error) {
-        res.status(500).json({ message: "Server internal error" });
+        res.status(500).json({ message: "Error interno del servidor" });
     }
 };
 export const createOneTicket = async ( req, res) => {
     try {
         const {obj} = req.cookie.ticket;
         const ticket = await createOne(obj)
-        res.status(201).json({ message: "Ticket created", ticket });
+        res.status(201).json({ message: "Ticket creado", ticket });
     } catch (error) {
-        res.status(500).json({ message: "Server internal error" });
+        res.status(500).json({ message: "Error interno del servidor" });
     }
 }
